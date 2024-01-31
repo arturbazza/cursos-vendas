@@ -13,4 +13,5 @@ public class Endereco {
     private Long id;
     private String logradouro;
     private String bairro;
+
 }
