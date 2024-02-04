@@ -2,6 +2,9 @@ package com.example.mercado.vendas.controller;
 
 import com.example.mercado.vendas.controller.request.ClienteRequest;
 import com.example.mercado.vendas.controller.response.ClienteResponse;
+import com.example.mercado.vendas.model.Cliente;
+import com.example.mercado.vendas.services.ClienteService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,26 +13,30 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/v0/clientes")
+@RequiredArgsConstructor
 public class ClienteController {
 
+    private  final ClienteService clienteService;
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void criarCliente(@RequestBody ClienteRequest clienteRequest) {
-        System.out.println(clienteRequest);
+        clienteService.criarNovoCliente(clienteRequest.toModel());
     }
     @GetMapping
     public List<ClienteResponse> listarClientes() {
-        return new ArrayList<>();
+        return clienteService.listarClientes();
     }
 
     @DeleteMapping(path = "/{id}")
     public void deletarCliente(@PathVariable Long id) {
-
+        clienteService.deletarCliente(id);
     }
 
     @PutMapping(path = "/{id}")
     public void editarCliente(@PathVariable Long id, @RequestBody ClienteRequest clienteRequest) {
         System.out.println("Editando: ");
         System.out.println(clienteRequest);
+
+        clienteService.editarCliente(id, clienteRequest.toModel());
     }
 }

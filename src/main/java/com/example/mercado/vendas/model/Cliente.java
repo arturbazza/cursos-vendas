@@ -24,4 +24,5 @@ public class Cliente {
     @OneToOne
     @JoinColumn(name = "endereco_id", foreignKey = @ForeignKey(name = "fk_cliente_endereco"))
     private Endereco endereco;
+
 }

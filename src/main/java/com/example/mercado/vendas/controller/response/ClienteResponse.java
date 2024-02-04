@@ -13,4 +13,8 @@ public class ClienteResponse {
 
     private EnderecoResponse endereco;
 
+    public static ClienteResponse fromModel(Cliente cliente) {
+        var ClienteResponse
+    }
+
 }
