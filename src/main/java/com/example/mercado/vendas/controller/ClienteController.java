@@ -24,7 +24,10 @@ public class ClienteController {
     }
     @GetMapping
     public List<ClienteResponse> listarClientes() {
-        return clienteService.listarClientes();
+        return clienteService.listarClientes()
+                .stream()
+                .map(ClienteResponse::fromModel)
+                .toList();
     }
 
     @DeleteMapping(path = "/{id}")
