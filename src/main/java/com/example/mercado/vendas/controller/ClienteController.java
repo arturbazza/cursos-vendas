@@ -2,7 +2,6 @@ package com.example.mercado.vendas.controller;
 
 import com.example.mercado.vendas.controller.request.ClienteRequest;
 import com.example.mercado.vendas.controller.response.ClienteResponse;
-import com.example.mercado.vendas.model.Cliente;
 import com.example.mercado.vendas.services.ClienteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
