@@ -28,6 +28,19 @@ public class ClienteService {
 
     public void editarCliente(Long id, Cliente cliente) {
         validarId(id);
+        cliente.setId(id);
+
+        Endereco enderecoExistente = enderecoReository.findByClienteId(id);
+        if (enderecoExistente != null) {
+            cliente.getEndereco().setId(enderecoExistente.getId());
+            if(!enderecoExistente.getBairro()
+                    .equalsIgnoreCase(cliente.getEndereco().getBairro())) {
+                throw new RuntimeException("Não pode trocar o bairro de um endereço existente!");
+            }
+        }
+
+        enderecoReository.save(cliente.getEndereco());
+        clienteReposirory.save(cliente);
     }
 
     private void validarId(Long id) {

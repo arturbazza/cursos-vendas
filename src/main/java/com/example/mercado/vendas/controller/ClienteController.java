@@ -36,8 +36,8 @@ public class ClienteController {
 
     @PutMapping(path = "/{id}")
     public void editarCliente(@PathVariable Long id, @RequestBody ClienteRequest clienteRequest) {
-        System.out.println("Editando: ");
-        System.out.println(clienteRequest);
+        //System.out.println("Editando: ");
+        //System.out.println(clienteRequest);
 
         clienteService.editarCliente(id, clienteRequest.toModel());
     }

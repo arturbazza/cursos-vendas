@@ -21,7 +21,7 @@ public class Cliente {
     @Column(length = 12, nullable = false)
     private String cpf;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "endereco_id", foreignKey = @ForeignKey(name = "fk_cliente_endereco"))
     private Endereco endereco;
 
