@@ -16,6 +16,7 @@ public class Venda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private LocalDateTime dataVenda;
 
     @Column(name = "valor_total")
@@ -24,6 +25,7 @@ public class Venda {
     private TipoPagamento tipoPagamento;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private EstadoVenda estadoVenda;
 
 }
